@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SND",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SND",
+  "parent":{
+    "name":"Ultimo-sonho",
+    "path":"Ultimo-sonho.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
