@@ -22,29 +22,47 @@ for (var i = 0; i < tam_menu; i++)
 	
 	if (point_in_rectangle(_mx, _my, x1, y1, x2, y2))
 	{
-		esc[i] = lerp(esc[i], 1.4, 0.15)
+		esc[i] = lerp(esc[i], 1.4, 0.15);
+		
+		
+		if (hover_atual != i) 
+		{
+			obj_snd.sfx_hover.play = true; 
+			hover_atual = i; 
+		}
+		
 		if (mouse_check_button_pressed(mb_left))
 		{
-					switch menu_opcs[i]
-		{
-			case menu_opcs[0]:
-			room_goto(rm_game);
-			break;
 			
-			case menu_opcs[1]:
-			show_message("Tem não chefia");
-			break;
+			obj_snd.sfx_click.play = true;
 			
-			case menu_opcs[2]:
-			game_end();
-			break;
-		}
+			switch menu_opcs[i]
+			{
+				case menu_opcs[0]:
+				room_goto(rm_game);
+				break;
+				
+				case menu_opcs[1]:
+				show_message("Tem não chefia");
+				break;
+				
+				case menu_opcs[2]:
+				game_end();
+				break;
+			}
 		}
 	}
 	else 
 	{
-		esc[i] = lerp(esc[i], 1, 0.15)
+		esc[i] = lerp(esc[i], 1, 0.15);
+		
+		
+		if (hover_atual == i)
+		{
+			hover_atual = -1; 
+		}
 	}
+	
 	
 	draw_text_transformed(_wgui / 2, _hgui / 2 + hstr * i, menu_opcs[i], esc[i], esc[i], 0);
 }
