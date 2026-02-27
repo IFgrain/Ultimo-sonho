@@ -39,6 +39,7 @@
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"rm_opcs","path":"rooms/rm_opcs/rm_opcs.yy",},},
+    {"id":{"name":"rm_teste_arte","path":"rooms/rm_teste_arte/rm_teste_arte.yy",},},
     {"id":{"name":"SND","path":"scripts/SND/SND.yy",},},
     {"id":{"name":"snd_dash","path":"sounds/snd_dash/snd_dash.yy",},},
     {"id":{"name":"spr_arbusto","path":"sprites/spr_arbusto/spr_arbusto.yy",},},
@@ -67,6 +68,7 @@
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"roomId":{"name":"rm_opcs","path":"rooms/rm_opcs/rm_opcs.yy",},},
+    {"roomId":{"name":"rm_teste_arte","path":"rooms/rm_teste_arte/rm_teste_arte.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
