@@ -5,7 +5,8 @@ var _left		= keyboard_check(ord("A"));
 var _portal		= keyboard_check_pressed(vk_shift);
 var _no_chao	= place_meeting(x, y+1, obj_box);
 var _pulou		= keyboard_check_pressed(vk_space);
-var _pulo_solto = keyboard_check_released(vk_space); 
+var _pulo_solto	= keyboard_check_released(vk_space); 
+var _atacar		= mouse_check_button_pressed(mb_left);
 
 if (mark && tempo_de_mark > 45)
 {
