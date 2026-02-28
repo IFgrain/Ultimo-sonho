@@ -10,3 +10,9 @@ else if (room == rm_game) {
     mus_jogo.PlayLoop();
     amb_jogo.PlayLoop();
 }
+
+else if (room == rm_dimensao) {
+    mus_jogo.Stop();
+    amb_jogo.Stop(); 
+    mus_dime.PlayLoop(); 
+}
