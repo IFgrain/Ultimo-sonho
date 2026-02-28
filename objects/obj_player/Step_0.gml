@@ -95,3 +95,12 @@ if (vida <= 0)
 {
 	game_restart();	
 }
+
+
+var _cam_x = camera_get_view_x(view_camera[0]);
+
+
+layer_x("bg_ceu", _cam_x * 0.9);  
+layer_x("bg_arvore3", _cam_x * 0.7);   
+layer_x("bg_arvore2", _cam_x * 0.4);    
+layer_x("bg_arvore1", _cam_x * 0.15);   
