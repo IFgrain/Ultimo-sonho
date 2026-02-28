@@ -10,3 +10,4 @@ sfx_click = new AudioPlaySingle(snd_click, au_typer_sfx);
 amb_jogo  = new AudioPlayLoop(snd_ambiente, au_typer_sfx);
 mus_menu  = new AudioPlayLoop(snd_menu, au_typer_music);
 mus_jogo  = new AudioPlayLoop(snd_musica_m1, au_typer_music);
+mus_dime  = new AudioPlayLoop(snd_dimension, au_typer_music);
