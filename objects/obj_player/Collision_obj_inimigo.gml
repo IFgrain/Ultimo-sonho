@@ -1,4 +1,4 @@
-if (!mark)
+if (!mark && dash_time <= 0)
 {
     vida -= 1;
 
@@ -8,7 +8,7 @@ if (!mark)
 
     // Toma lapada horizontal E VERTICAL
     hspd = dir_dano * 6; 
-    vspd = -4; // Joga o player um pouco para o alto!
+    vspd = -4; 
 
     // liga invencibilidade
     mark = true;
