@@ -8,5 +8,5 @@ sfx_dash  = new AudioPlaySingle(snd_dash, au_typer_sfx);
 sfx_hover = new AudioPlaySingle(snd_hover, au_typer_sfx);
 sfx_click = new AudioPlaySingle(snd_click, au_typer_sfx);
 amb_jogo = new AudioPlayLoop(snd_ambiente, au_typer_sfx); // Saporra é som ambinete, não esquece disso
-mus_menu = new AudioPlayLoop(snd_musica_menu, au_typer_music);
-mus_jogo = new AudioPlayLoop(snd_musica_jogo, au_typer_music);
+mus_menu = new AudioPlayLoop(snd_menu, au_typer_music);
+mus_jogo = new AudioPlayLoop(snd_musica_m1, au_typer_music);
