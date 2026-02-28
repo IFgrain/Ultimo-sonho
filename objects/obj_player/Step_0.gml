@@ -16,10 +16,13 @@ else
 	
 	hspd = (_right - _left) * spd;
 
-	if (_portal && dash_time <= 0) {
+	if (_portal && dash_time <= 0)
+	{
 		dash_time = 10;
+		obj_snd.sfx_dash.play = true;
 	}
-	if (dash_time > 0) {
+	if (dash_time > 0)
+	{
 		spd = spd_dash;
 		dash_time -= 1;
 	} else {
