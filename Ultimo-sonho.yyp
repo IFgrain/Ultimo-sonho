@@ -61,6 +61,7 @@
     {"id":{"name":"spr_life","path":"sprites/spr_life/spr_life.yy",},},
     {"id":{"name":"spr_mansion","path":"sprites/spr_mansion/spr_mansion.yy",},},
     {"id":{"name":"spr_nuvens","path":"sprites/spr_nuvens/spr_nuvens.yy",},},
+    {"id":{"name":"spr_player_dmg_axe","path":"sprites/spr_player_dmg_axe/spr_player_dmg_axe.yy",},},
     {"id":{"name":"spr_player_dmg","path":"sprites/spr_player_dmg/spr_player_dmg.yy",},},
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
     {"id":{"name":"spr_player_mask","path":"sprites/spr_player_mask/spr_player_mask.yy",},},
