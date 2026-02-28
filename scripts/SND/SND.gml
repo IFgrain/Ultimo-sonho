@@ -70,3 +70,39 @@ function AudioPlaySingle(_sound_id, _au_typer, _offset = 1) : AudioElement() con
 		}
 	}
 }
+
+function AudioPlayLoop(_sound_id, _au_typer, _offset = 1) : AudioElement() constructor
+{
+	sound_id = _sound_id;
+	type	 = _au_typer;
+	offset	 = _offset; 
+	snd_inst = noone;
+	
+	///@method PlayLoop
+	static PlayLoop = function() {
+		if (!audio_is_playing(sound_id)) {
+			snd_inst = audio_play_sound(sound_id, 0, true);
+			Update(); 
+		}
+	}
+	
+	///@method Stop
+	static Stop = function() {
+		if (audio_is_playing(sound_id)) {
+			audio_stop_sound(sound_id);
+		}
+	}
+	
+	///@method Update
+	static Update = function() { 
+		if (audio_is_playing(sound_id)) {
+			var _level;
+			if (type == au_typer_sfx) {
+				_level = controller.vol_sfx * offset;
+			} else {
+				_level = controller.vol_music * offset;
+			}
+			audio_sound_gain(sound_id, _level, 0);
+		}
+	}
+} 

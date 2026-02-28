@@ -44,6 +44,7 @@
     {"id":{"name":"snd_click","path":"sounds/snd_click/snd_click.yy",},},
     {"id":{"name":"snd_dash","path":"sounds/snd_dash/snd_dash.yy",},},
     {"id":{"name":"snd_hover","path":"sounds/snd_hover/snd_hover.yy",},},
+    {"id":{"name":"Sound4","path":"sounds/Sound4/Sound4.yy",},},
     {"id":{"name":"spr_arbusto","path":"sprites/spr_arbusto/spr_arbusto.yy",},},
     {"id":{"name":"spr_arvore","path":"sprites/spr_arvore/spr_arvore.yy",},},
     {"id":{"name":"spr_arvore2","path":"sprites/spr_arvore2/spr_arvore2.yy",},},
