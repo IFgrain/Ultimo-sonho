@@ -64,7 +64,7 @@ switch (estado)
 // Olhando  para a direção que estou indo
 if (hspd != 0) 
 {
-    image_xscale = sign(hspd);
+    image_xscale = sign(hspd) * 2;
 }
 
 

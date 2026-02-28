@@ -11,6 +11,10 @@ function Audio_controller(_str_sfx,_str_music,_str_master) constructor
 	global_music	= _str_music;
 	global_master	= _str_master;
 	
+	
+	vol_sfx   = 1; 
+	vol_music = 1;
+	
 	///@method Update
 	static Update = function()
 	{
@@ -24,7 +28,6 @@ function Audio_controller(_str_sfx,_str_music,_str_master) constructor
 		}
 	}
 }
-
 
 function AudioElement() constructor
 {

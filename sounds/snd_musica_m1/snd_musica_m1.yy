@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":158.58939,
   "exportDir":"",
   "name":"snd_musica_m1",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"",
-  "volume":1.0,
+  "soundFile":"snd_musica_m1.mp3",
+  "volume":0.6,
 }

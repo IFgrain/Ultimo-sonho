@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":26.011791,
+  "duration":158.19756,
   "exportDir":"",
   "name":"snd_ambiente",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ambiente.wav",
-  "volume":1.0,
+  "soundFile":"snd_ambiente.mp3",
+  "volume":0.4,
 }
