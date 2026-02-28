@@ -64,9 +64,8 @@ switch (estado)
 // Olhando  para a direção que estou indo
 if (hspd != 0) 
 {
-    image_xscale = sign(hspd) * 2;
+    image_xscale = sign(hspd);
 }
-
 
 // Colisão horizontal
 if (place_meeting(x + hspd, y, obj_box))
@@ -81,5 +80,16 @@ if (place_meeting(x + hspd, y, obj_box))
 	hspd = 0;
 }
 
-// Move na horizontal
+ 
+// Colisão Vertical 
+if (place_meeting(x, y + vspd, obj_box))
+{
+	while (!place_meeting(x, y + sign(vspd), obj_box)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+
+
+y += vspd; 
 x+= hspd;

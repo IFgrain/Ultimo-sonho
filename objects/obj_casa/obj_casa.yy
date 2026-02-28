@@ -1,12 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inimigo",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_casa",
+  "eventList":[],
   "managed":true,
-  "name":"obj_inimigo",
+  "name":"obj_casa",
   "overriddenProperties":[],
   "parent":{
     "name":"Objetos",
@@ -31,12 +28,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_inimigo",
-    "path":"sprites/spr_inimigo/spr_inimigo.yy",
+    "name":"spr_mansion",
+    "path":"sprites/spr_mansion/spr_mansion.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_inimigo",
-    "path":"sprites/spr_inimigo/spr_inimigo.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

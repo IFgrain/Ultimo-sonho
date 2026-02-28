@@ -32,10 +32,13 @@
   "resources":[
     {"id":{"name":"ft_padrao","path":"fonts/ft_padrao/ft_padrao.yy",},},
     {"id":{"name":"obj_box","path":"objects/obj_box/obj_box.yy",},},
+    {"id":{"name":"obj_casa","path":"objects/obj_casa/obj_casa.yy",},},
+    {"id":{"name":"obj_chao_d2","path":"objects/obj_chao_d2/obj_chao_d2.yy",},},
     {"id":{"name":"obj_inimigo","path":"objects/obj_inimigo/obj_inimigo.yy",},},
     {"id":{"name":"obj_menu_inicial","path":"objects/obj_menu_inicial/obj_menu_inicial.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_snd","path":"objects/obj_snd/obj_snd.yy",},},
+    {"id":{"name":"rm_dimensao","path":"rooms/rm_dimensao/rm_dimensao.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"rm_opcs","path":"rooms/rm_opcs/rm_opcs.yy",},},
@@ -77,6 +80,7 @@
     {"roomId":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"roomId":{"name":"rm_opcs","path":"rooms/rm_opcs/rm_opcs.yy",},},
     {"roomId":{"name":"rm_teste_arte","path":"rooms/rm_teste_arte/rm_teste_arte.yy",},},
+    {"roomId":{"name":"rm_dimensao","path":"rooms/rm_dimensao/rm_dimensao.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
