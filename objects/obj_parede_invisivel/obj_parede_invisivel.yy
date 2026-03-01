@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_chao_d2",
+  "%Name":"obj_parede_invisivel",
   "eventList":[],
   "managed":true,
-  "name":"obj_chao_d2",
+  "name":"obj_parede_invisivel",
   "overriddenProperties":[],
   "parent":{
     "name":"Objetos",
@@ -31,9 +31,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_chao_roxo",
-    "path":"sprites/spr_chao_roxo/spr_chao_roxo.yy",
+    "name":"spr_chao",
+    "path":"sprites/spr_chao/spr_chao.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

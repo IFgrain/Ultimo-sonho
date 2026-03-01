@@ -1,89 +1,120 @@
 // Fazendo o inimigo
 
-// Verificando se o player existe
-if (instance_exists(obj_player))
+// 1. Verificando o Player e Tomando Decisões
+if (instance_exists(obj_player) && estado != "dano")
 {
-	var _dist = distance_to_object(obj_player)
+	var _dist = distance_to_object(obj_player);
 	
-	//	Se o player aparecer na minha visão
-	if (_dist <= dist_visao)
+	// Entrou no raio de soco!
+	if (_dist <= dist_ataque) 
 	{
-		// Eu mogo ele, ou pelo menos tento
-		estado = "mogador"
+		estado = "atacando";
 	}
-	// Se o player meter o pé e sair do meu campo de visão
-	else if (estado ==  "mogador")
+	// Saiu do soco, mas ainda tá na visão
+	else if (_dist <= dist_visao)
 	{
-		//eu paro de seguir ele e inicio a contagem do tempo parado
-		estado = "parado"
-		timer = tempo_parado 
+		estado = "mogador";
+	}
+	// Perdeu o player de vista
+	else if (estado ==  "mogador" || estado == "atacando")
+	{
+		estado = "parado";
+		timer = tempo_parado; 
 	}
 }
 
-// Trocando os estados
+// 2. A Máquina de Estados
 switch (estado)
 {
 	case "parado":
-	hspd = 0 // descansar,né? Que o cara não é de ferro
-	timer--; // cotagem regressiva começa
-	
-	// Quando o tempo do cronometro acaba
-	if (timer <= 0)
-	{
-		// Eu volto a andar por um tempo antes de parar de novo
-	    estado = "vigia"
-		timer = 120;
-		dir_vigia = choose(1, -1);
-	}
-	break
+		hspd = 0; 
+		timer--; 
+		
+		if (timer <= 0) {
+			estado = "vigia";
+			timer = 120;
+			dir_vigia = choose(1, -1);
+		}
+	break;
 	
 	case "vigia":
-	//  Quando eu estou vigiando, eu ando mais lento
-	 hspd = dir_vigia * (spd * 0.5); 
-     timer--;
-	 
-	 // Cansei caminhar, vou parar um pouquinho
-        if (timer <= 0) 
-        {
-            estado = "parado";
-            timer = tempo_parado;
-        }
-        break;
+		hspd = dir_vigia * (spd * 0.5); 
+		timer--;
+		 
+		if (timer <= 0) {
+			estado = "parado";
+			timer = tempo_parado;
+		}
+	break;
 		
-		// finalizando o loop
-		 case "mogador":
-        if (instance_exists(obj_player)) 
-        {
-            // vi o player, vou atrás dele
-            var _dir = sign(obj_player.x - x);
-            hspd = _dir * spd; 
-        }
-        break;
+	case "mogador":
+		if (instance_exists(obj_player)) {
+			var _dir = sign(obj_player.x - x);
+			hspd = _dir * spd; 
+			sprite_index = spr_inimigo; 
+		}
+	break;
 		
-		case "dano":
-        // Aqui ele NÃO tenta andar atrás do player. 
-        // Ele fica apenas deslizando para trás com o hspd do knockback.
-        
-        // Atrito para ele ir freando no chão 
-        if (hspd != 0) {
-            hspd = lerp(hspd, 0, 0.1); 
-        }
+	// ESTADO DE ATAQUE
+	case "atacando":
+		hspd = 0; // O inimigo trava no lugar para bater
+		sprite_index = spr_inimigo_atk; // Toca a animação do ataque
+		
+		// Quando a animação chega no último frame 
+		if (image_index >= image_number - 1) 
+        {
+            // Verifica se o player existe e se ele AINDA está no raio de ataque!
+            if (instance_exists(obj_player) && distance_to_object(obj_player) <= dist_ataque) 
+            {
+                // Verifica se o player NÃO está com o "mark" (invulnerável após tomar dano)
+                if (!obj_player.mark) 
+                {
+                    obj_player.vida -= 1; // Arranca 1 coração do player!
+                    
+                    // Ativa a invulnerabilidade e o pisca-pisca do player
+                    obj_player.mark = true; 
+                    obj_player.tempo_de_mark = 60; // 1 segundo de invulnerabilidade
+                    
+                    // Empurra o player para trás
+                    var _dir = sign(obj_player.x - x);
+                    if (_dir == 0) _dir = 1;
+                    
+                    obj_player.hspd = _dir * 4; 
+                    obj_player.vspd = -3; // Joga o player um pouquinho pra cima
+                    
+                    // Treme a tela para mostrar que o golpe foi duro!
+                    instance_create_layer(0, 0, "Instances", obj_shake);
+                    
+                    // Toca o som de tomar dano 
+                    if (instance_exists(obj_snd)) obj_snd.sfx_hit.play = true;
+                }
+            }
+            
+			estado = "mogador"; // Acabou a braçada, volta a correr atrás do player!
+		}
+	break;
 
-        timer--;
-        
-        // Quando o tempo de atordoamento acabar...
-        if (timer <= 0) {
-            estado = "mogador"; // Volta a ficar puto e vai atrás do player
-            sprite_index = spr_inimigo; 
-        }
-    break;
+	// Dano
+	case "dano":
+		if (hspd != 0) {
+			hspd = lerp(hspd, 0, 0.1); 
+		}
+		timer--;
+		
+		// O timer acabou!
+		if (timer <= 0) {
+			estado = "mogador"; // Fica furioso e volta a caçar
+			sprite_index = spr_inimigo;
+		}
+	break;
 }
 
-// Olhando  para a direção que estou indo
-if (hspd != 0) 
+// 3. Olhando para a direção certa
+if (hspd != 0 && estado != "dano") 
 {
     image_xscale = sign(hspd);
 }
+
 
 // Colisão horizontal
 if (place_meeting(x + hspd, y, obj_box))
@@ -109,6 +140,10 @@ if (place_meeting(x, y + vspd, obj_box))
 	vspd = 0;
 }
 
+if (vida <= 0)
+{
+	instance_destroy();
+}
 
 y += vspd; 
 x+= hspd;

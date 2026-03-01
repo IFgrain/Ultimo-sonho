@@ -10,144 +10,150 @@ var _pulo_solto	= keyboard_check_released(vk_space);
 var _atacar		= mouse_check_button_pressed(mb_left);
 
 
-// 2. O GATILHO DO ATAQUE (A Machadada Instantânea!)
-if (_atacar && !atacando && pode_atacar && dash_time <= 0 && !mark)
+// 2. VERIFICAÇÃO DE VIDA E AÇÕES
+if (vida > 0)
 {
-    atacando = true;
-    pode_atacar = false;
-    image_index = 0; 
-    alarm[1] = 25; // Cooldown do ataque
+	// --- GATILHO DO ATAQUE ---
+	if (_atacar && !atacando && pode_atacar && dash_time <= 0 && !mark)
+	{
+		atacando = true;
+		pode_atacar = false;
+		image_index = 0; 
+		alarm[1] = 25; // Cooldown do ataque
 
-    // Descobre para qual lado o player está olhando
-    var _dir = sign(image_xscale); 
-    if (_dir == 0) _dir = 1; 
-    
-    // Define o tamanho da área de acerto 
-    var _alcance = 100; // Quão longe o machado alcança
-    var _altura = 90;  // Altura do machado
-    
-    // Cria uma caixa imaginária na frente do player e procura um inimigo lá dentro
-    var _inimigo = collision_rectangle(x, y - _altura, x + (_dir * _alcance), y + 10, obj_inimigo, false, true);
-    
-    // Se encontrou um inimigo na área do machado...
-    if (_inimigo != noone) 
-    {
-        // Aplica dano
-        _inimigo.vida -= 1;
-        
-        // Empurrão (Knockback)
-        _inimigo.hspd = _dir * 5; 
-        _inimigo.vspd = -4;
-        
-        // Muda o estado do inimigo para "dano" e trava a IA dele
-        _inimigo.estado = "dano";
-        _inimigo.timer = 20; 
-        _inimigo.sprite_index = spr_inimigo_dmg; 
-        
-        // Treme a tela!
-        instance_create_layer(0, 0, "Instances", obj_shake);
-        
-        // Toca o som de impacto
-        if (instance_exists(obj_snd)) obj_snd.sfx_hit.play = true;
-    }
+		var _dir = sign(image_xscale); 
+		if (_dir == 0) _dir = 1; 
+		
+		var _alcance = 100; 
+		var _altura = 90;  
+		
+		var _inimigo = collision_rectangle(x, y - _altura, x + (_dir * _alcance), y + 10, obj_inimigo, false, true);
+		
+		if (_inimigo != noone) 
+		{
+			_inimigo.vida -= 1;
+			_inimigo.hspd = _dir * 5; 
+			_inimigo.vspd = -4;
+			_inimigo.estado = "dano";
+			_inimigo.timer = 20; 
+			_inimigo.sprite_index = spr_inimigo_dmg; 
+			
+			// Treme a tela!
+instance_create_layer(0, 0, "Instances", obj_shake);
+
+// Toca o som de impacto
+if (instance_exists(obj_snd)) obj_snd.sfx_hit.play = true;
+
+// HITSTOP
+var _tempo_congelado = current_time + 40; // Congela tudo por 40 milissegundos
+while (current_time < _tempo_congelado) { 
+    // O GameMaker fica preso aqui dentro lendo o vazio e a tela "trava" pro jogador!
 }
+		}
+	}
 
-// 3. LÓGICA DE MOVIMENTO
-if (mark && tempo_de_mark > 45)
-{
-	// Sofrendo knockback
+	// --- LÓGICA DE MOVIMENTO ---
+	if (mark && tempo_de_mark > 45)
+	{
+		// Sofrendo knockback, não faz nada
+	}
+	else
+	{
+		// Dash
+		if (_portal && dash_time <= 0)
+		{
+			dash_time = 25;
+			var _dir = _right - _left;
+			if (_dir != 0) dash_dir = _dir;
+			else dash_dir = sign(image_xscale); 
+			
+			if (instance_exists(obj_snd)) obj_snd.sfx_dash.play = true;
+		}
+
+		if (dash_time > 0)
+		{
+			hspd = dash_dir * spd_dash; 
+			vspd = 0;
+			dash_time -= 1;
+		} 
+		else // Andar Normal
+		{
+			hspd = (_right - _left) * spd_normal;
+
+			if (_no_chao && _pulou) {
+				vspd = pulo; 
+			}
+		}
+
+		if (_pulo_solto && vspd < 0) {
+			vspd *= 0.5; 
+		}
+	}
+
+	// --- CONTROLE DE SPRITES ---
+	if (atacando) 
+	{
+		if (hspd != 0) sprite_index = spr_player_dmg_axe_1; 
+		else sprite_index = spr_player_dmg_axe; 
+		
+		if (image_index >= image_number - 1) atacando = false;
+	} 
+	else if (dash_time > 0) 
+	{
+		sprite_index = spr_player_dash;
+	}
+	else 
+	{
+		if (!_no_chao) sprite_index = spr_player_jump;
+		else if (hspd != 0) sprite_index = spr_player_run; 
+		else sprite_index = spr_player;
+	}
+
+	// Virar de lado
+	if (hspd != 0) {
+		image_xscale = sign(hspd) * 1.5;
+	}
 }
 else
 {
-	// Dash
-	if (_portal && dash_time <= 0)
+	// 3. A LÓGICA DE MORTE (Game Over)
+	hspd = 0; // Trava o movimento horizontal
+
+	// Troca a sprite para a de morte
+	if (sprite_index != spr_player_death)
 	{
-		dash_time = 25;
-		var _dir = _right - _left;
-		if (_dir != 0) dash_dir = _dir;
-		else dash_dir = sign(image_xscale); 
+		sprite_index = spr_player_death;
+		image_index = 0; 
 		
-		if (instance_exists(obj_snd)) obj_snd.sfx_dash.play = true;
+		if (instance_exists(obj_snd)) obj_snd.sfx_derrota.play = true; 
 	}
 
-	if (dash_time > 0)
+	// Finaliza a animação e vai pro menu
+	if (image_index >= image_number - 1)
 	{
-		hspd = dash_dir * spd_dash; 
-		vspd = 0;
-		dash_time -= 1;
-	} 
-	else // Andar Normal
-	{
-		hspd = (_right - _left) * spd_normal;
-
-		if (_no_chao && _pulou) {
-			vspd = pulo; 
-		}
-	}
-
-	// Pulo variável
-	if (_pulo_solto && vspd < 0) {
-		vspd *= 0.5; 
+		image_speed = 0; 
+		room_goto(rm_menu); 
 	}
 }
 
 
-// 4. FÍSICA E COLISÕES
+// 4. FÍSICA E COLISÕES 
 vspd += grv; 
 
-if (place_meeting(x + hspd, y, obj_box))
-{
-	while (!place_meeting(x+ sign(hspd), y , obj_box)) {
-		x += sign(hspd);
-	}
-	hspd = 0;
+if (place_meeting(x + hspd, y, obj_box)) {
+    while (!place_meeting(x+ sign(hspd), y , obj_box)) { x += sign(hspd); }
+    hspd = 0;
 }
 x += hspd; 
 
-if (place_meeting(x, y + vspd, obj_box))
-{
-	while (!place_meeting(x, y + sign(vspd), obj_box)) {
-		y += sign(vspd);
-	}
-	vspd = 0;
+if (place_meeting(x, y + vspd, obj_box)) {
+    while (!place_meeting(x, y + sign(vspd), obj_box)) { y += sign(vspd); }
+    vspd = 0;
 }
-y += vspd; 
+y += vspd;
 
 
-// 5. CONTROLE DE SPRITES 
-if (atacando) 
-{
-	if (hspd != 0) {
-		sprite_index = spr_player_dmg_axe_1; 
-	} else {
-		sprite_index = spr_player_dmg_axe; 
-	}
-	
-	// Encerra o ataque quando a animação do machado acaba
-	if (image_index >= image_number - 1)
-	{
-		atacando = false;
-	}
-} 
-else 
-{
-	if (!_no_chao) {
-		sprite_index = spr_player_jump;
-	} else {
-		if (hspd != 0) {
-			sprite_index = spr_player_run; 
-		} else {
-			sprite_index = spr_player;
-		}
-	}
-}
-
-
-// 6. EFEITOS FINAIS (Virar, Dano e Parallax)
-if (hspd != 0) {
-	image_xscale = sign(hspd) * 1.5;
-}
-
+// 5. EFEITOS FINAIS
 if (mark)
 {
 	tempo_de_mark--;
@@ -158,10 +164,6 @@ if (mark)
 		mark = false;
 		image_alpha = 1;
 	}
-}
-
-if (vida <= 0) {
-	game_restart();	
 }
 
 var _cam_x = camera_get_view_x(view_camera[0]);

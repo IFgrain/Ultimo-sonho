@@ -4,11 +4,12 @@ global.vol_master = 1;
 
 audio_controller = new Audio_controller("vol_sfx", "vol_music", "vol_master");
 
-sfx_dash  = new AudioPlaySingle(snd_dash, au_typer_sfx);
-sfx_hover = new AudioPlaySingle(snd_hover, au_typer_sfx);
-sfx_click = new AudioPlaySingle(snd_click, au_typer_sfx);
-sfx_hit	  = new AudioPlaySingle(snd_machado, au_typer_sfx);
-amb_jogo  = new AudioPlayLoop(snd_ambiente, au_typer_sfx);
-mus_menu  = new AudioPlayLoop(snd_menu, au_typer_music);
-mus_jogo  = new AudioPlayLoop(snd_musica_m1, au_typer_music);
-mus_dime  = new AudioPlayLoop(snd_dimension, au_typer_music);
+sfx_dash	  = new AudioPlaySingle(snd_dash, au_typer_sfx);
+sfx_hover	  = new AudioPlaySingle(snd_hover, au_typer_sfx);
+sfx_click	  = new AudioPlaySingle(snd_click, au_typer_sfx);
+sfx_hit		  = new AudioPlaySingle(snd_machado, au_typer_sfx);
+sfx_derrota	  = new AudioPlaySingle(snd_derrota, au_typer_sfx);
+amb_jogo	  = new AudioPlayLoop(snd_ambiente, au_typer_sfx);
+mus_menu	  = new AudioPlayLoop(snd_menu, au_typer_music);
+mus_jogo	  = new AudioPlayLoop(snd_musica_m1, au_typer_music);
+mus_dime	  = new AudioPlayLoop(snd_dimension, au_typer_music);
