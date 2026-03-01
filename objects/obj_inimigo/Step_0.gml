@@ -1,4 +1,4 @@
-// Fazendo  o inimigo
+// Fazendo o inimigo
 
 // Verificando se o player existe
 if (instance_exists(obj_player))
@@ -11,7 +11,7 @@ if (instance_exists(obj_player))
 		// Eu mogo ele, ou pelo menos tento
 		estado = "mogador"
 	}
-	// Se o player meter o pé e sair do meu campo de visã
+	// Se o player meter o pé e sair do meu campo de visão
 	else if (estado ==  "mogador")
 	{
 		//eu paro de seguir ele e inicio a contagem do tempo parado
@@ -59,6 +59,24 @@ switch (estado)
             hspd = _dir * spd; 
         }
         break;
+		
+		case "dano":
+        // Aqui ele NÃO tenta andar atrás do player. 
+        // Ele fica apenas deslizando para trás com o hspd do knockback.
+        
+        // Atrito para ele ir freando no chão 
+        if (hspd != 0) {
+            hspd = lerp(hspd, 0, 0.1); 
+        }
+
+        timer--;
+        
+        // Quando o tempo de atordoamento acabar...
+        if (timer <= 0) {
+            estado = "mogador"; // Volta a ficar puto e vai atrás do player
+            sprite_index = spr_inimigo; 
+        }
+    break;
 }
 
 // Olhando  para a direção que estou indo
@@ -80,6 +98,7 @@ if (place_meeting(x + hspd, y, obj_box))
 	hspd = 0;
 }
 
+ vspd += grv
  
 // Colisão Vertical 
 if (place_meeting(x, y + vspd, obj_box))
