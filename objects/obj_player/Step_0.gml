@@ -39,16 +39,16 @@ if (vida > 0)
 			_inimigo.sprite_index = spr_inimigo_dmg; 
 			
 			// Treme a tela!
-instance_create_layer(0, 0, "Instances", obj_shake);
+			instance_create_layer(0, 0, "Instances", obj_shake);
 
-// Toca o som de impacto
-if (instance_exists(obj_snd)) obj_snd.sfx_hit.play = true;
+			// Toca o som de impacto
+			if (instance_exists(obj_snd)) obj_snd.sfx_hit.play = true;
 
-// HITSTOP
-var _tempo_congelado = current_time + 40; // Congela tudo por 40 milissegundos
-while (current_time < _tempo_congelado) { 
-    // O GameMaker fica preso aqui dentro lendo o vazio e a tela "trava" pro jogador!
-}
+			// HITSTOP
+			var _tempo_congelado = current_time + 40; // Congela tudo por 40 milissegundos
+			while (current_time < _tempo_congelado) { 
+				// O GameMaker fica preso aqui dentro lendo o vazio e a tela "trava" pro jogador!
+			}
 		}
 	}
 
@@ -91,7 +91,12 @@ while (current_time < _tempo_congelado) {
 	}
 
 	// --- CONTROLE DE SPRITES ---
-	if (atacando) 
+	// O dano tem prioridade máxima!
+	if (mark && tempo_de_mark > 45) 
+	{
+		sprite_index = spr_player_dmg; 
+	}
+	else if (atacando) 
 	{
 		if (hspd != 0) sprite_index = spr_player_dmg_axe_1; 
 		else sprite_index = spr_player_dmg_axe; 
@@ -100,7 +105,7 @@ while (current_time < _tempo_congelado) {
 	} 
 	else if (dash_time > 0) 
 	{
-		sprite_index = spr_player_dash;
+		sprite_index = spr_player_dash; 
 	}
 	else 
 	{
@@ -109,9 +114,11 @@ while (current_time < _tempo_congelado) {
 		else sprite_index = spr_player;
 	}
 
-	// Virar de lado
-	if (hspd != 0) {
-		image_xscale = sign(hspd) * 1.5;
+	// --- DIREÇÃO DA SPRITE ---
+	// Ele só vira se estiver andando e se NÃO estiver atacando
+	if (hspd != 0 && !atacando) 
+	{
+		image_xscale = sign(hspd) * 1.5; 
 	}
 }
 else
