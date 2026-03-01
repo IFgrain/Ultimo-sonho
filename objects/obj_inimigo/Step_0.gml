@@ -9,6 +9,7 @@ if (instance_exists(obj_player)) {
 }
 image_speed = 1; // Garante que a animação roda normal se o player estiver vivo
 
+
 // 1. Verificando o Player e Tomando Decisões
 if (instance_exists(obj_player) && estado != "dano")
 {
