@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_dimension",
+  "%Name":"snd_machado",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":41.80823,
+  "duration":0.81600904,
   "exportDir":"",
-  "name":"snd_dimension",
+  "name":"snd_machado",
   "parent":{
     "name":"Sons",
     "path":"folders/Sons.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_dimension.wav",
-  "volume":0.4,
+  "soundFile":"snd_machado.mp3",
+  "volume":1.0,
 }
