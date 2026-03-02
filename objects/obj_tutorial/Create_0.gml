@@ -1,3 +1,9 @@
+if (global.tutorial_feito == true) {
+    instance_destroy();
+    exit; 
+}
+
+
 textos = [
     "Fui chamado para eliminar mais uma anomalia...",
     "Tá, WASD para me movimentar, espaço pula e o clique do mouse ataca.",

@@ -14,7 +14,7 @@ dash_time = 0;
 dash_dir = 1;
 
 // Vida
-vida = 3; 
+vida = 6; 
 mark = false; 
 tempo_de_mark = 0; 
 

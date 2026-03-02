@@ -3,9 +3,10 @@ if (keyboard_check_pressed(vk_space))
 {
     indice++;
     
-    // Se o texto acabou, o tutorial se destrói e o jogo começa!
-    if (indice >= array_length(textos)) 
+    
+  if (indice >= array_length(textos)) 
     {
+        global.tutorial_feito = true; 
         instance_destroy();
     }
 }
