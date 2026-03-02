@@ -14,13 +14,13 @@
   "exportDir":"",
   "name":"snd_dimension",
   "parent":{
-    "name":"Sons",
-    "path":"folders/Sons.yy",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_dimension.wav",
-  "volume":0.4,
+  "volume":0.01,
 }

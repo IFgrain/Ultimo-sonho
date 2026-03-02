@@ -14,13 +14,13 @@
   "exportDir":"",
   "name":"snd_musica_m1",
   "parent":{
-    "name":"Sons",
-    "path":"folders/Sons.yy",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_musica_m1.mp3",
-  "volume":0.2,
+  "volume":0.3,
 }

@@ -3,16 +3,22 @@ mus_jogo.Stop();
 amb_jogo.Stop();
 
 
-if (room == rm_menu) {
+if (room == rm_menu) 
+{
+    mus_jogo.Stop(); 
+    mus_dime.Stop(); 
+    amb_jogo.Stop();
     mus_menu.PlayLoop();
-} 
-else if (room == rm_game) {
+    
+    global.venceu_dimensao = false; 
+}
+else if (room == rm_game)
+{
     mus_jogo.PlayLoop();
-    amb_jogo.PlayLoop();
 }
 
-else if (room == rm_dimensao) {
+else if (room == rm_dimensao) 
+{
     mus_jogo.Stop();
-    amb_jogo.Stop(); 
     mus_dime.PlayLoop(); 
 }

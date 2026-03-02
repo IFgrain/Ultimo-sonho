@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites Player",
-    "path":"folders/Sprites/Sprites Player.yy",
+    "path":"folders/Rooms/Sprites/Sprites Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -60,7 +60,7 @@
     },
     "name":"spr_player_dash",
     "playback":1,
-    "playbackSpeed":6.0,
+    "playbackSpeed":8.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

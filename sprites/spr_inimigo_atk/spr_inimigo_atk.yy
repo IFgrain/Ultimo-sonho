@@ -29,7 +29,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites Inimigo",
-    "path":"folders/Sprites/Sprites Inimigo.yy",
+    "path":"folders/Rooms/Sprites/Sprites Inimigo.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

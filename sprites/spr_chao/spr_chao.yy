@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites Floor",
-    "path":"folders/Sprites/Sprites Floor.yy",
+    "path":"folders/Rooms/Sprites/Sprites Floor.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

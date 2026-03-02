@@ -1,14 +1,26 @@
-// A reconstrução está acontecendo e quase finalizada
+// A reconstrução está finalizada
 
 // 1. INPUTS
-var _right		= keyboard_check(ord("D"));
-var _left		= keyboard_check(ord("A"));
-var _portal		= keyboard_check_pressed(vk_shift);
-var _no_chao	= place_meeting(x, y+1, obj_box);
-var _pulou		= keyboard_check_pressed(vk_space);
-var _pulo_solto	= keyboard_check_released(vk_space); 
-var _atacar		= mouse_check_button_pressed(mb_left);
+var _right      = false;
+var _left       = false;
+var _portal     = false;
+var _pulou      = false;
+var _pulo_solto = false; 
+var _atacar     = false;
 
+// O JOGADOR SÓ TEM O CONTROLE SE O TUTORIAL NÃO EXISTIR MAIS!
+if (!instance_exists(obj_tutorial)) 
+{
+    _right      = keyboard_check(ord("D"));
+    _left       = keyboard_check(ord("A"));
+    _portal     = keyboard_check_pressed(vk_shift);
+    _pulou      = keyboard_check_pressed(vk_space);
+    _pulo_solto = keyboard_check_released(vk_space); 
+    _atacar     = mouse_check_button_pressed(mb_left);
+}
+
+
+var _no_chao    = place_meeting(x, y+1, obj_box);
 
 // 2. VERIFICAÇÃO DE VIDA E AÇÕES
 if (vida > 0)
@@ -175,6 +187,6 @@ if (mark)
 
 var _cam_x = camera_get_view_x(view_camera[0]);
 layer_x("bg_ceu", _cam_x * 0.9);  
-layer_x("bg_arvore3", _cam_x * 0.7);   
-layer_x("bg_arvore2", _cam_x * 0.4);    
+layer_x("bg_arvore3", (_cam_x * 0.7) + 80);   
+layer_x("bg_arvore2", (_cam_x * 0.4) + 200);    
 layer_x("bg_arvore1", _cam_x * 0.15);

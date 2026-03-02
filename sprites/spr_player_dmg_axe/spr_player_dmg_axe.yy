@@ -28,7 +28,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites Player",
-    "path":"folders/Sprites/Sprites Player.yy",
+    "path":"folders/Rooms/Sprites/Sprites Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

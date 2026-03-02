@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Sprites Cenario",
-    "path":"folders/Sprites/Sprites Cenario.yy",
+    "path":"folders/Rooms/Sprites/Sprites Cenario.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

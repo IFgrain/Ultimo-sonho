@@ -32,7 +32,7 @@
   "origin":0,
   "parent":{
     "name":"Sprites UI",
-    "path":"folders/Sprites/Sprites UI.yy",
+    "path":"folders/Rooms/Sprites/Sprites UI.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

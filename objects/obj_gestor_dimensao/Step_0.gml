@@ -5,8 +5,15 @@ timer--;
 // Condição de Vitória: O player mogou todo mundo
 if (instance_number(obj_inimigo) == 0)
 {
-    show_message("Sobreviveste à maldição!"); 
-    room_goto(rm_game); // Volta para a glória do mundo comum
+    global.venceu_dimensao = true; // Avisa pro jogo inteiro que ele venceu!
+    
+    // --- O CONSERTO DO ÁUDIO ---
+    audio_stop_all(); // Cala a música de batalha imediatamente!
+    
+    
+     audio_play_sound(snd_musica_m1, 1, true); 
+    
+    room_goto(rm_game); // Volta pro mundo real
 }
 
 // O player não conseguiu limpar a tempo... dobra e o proximo é ele

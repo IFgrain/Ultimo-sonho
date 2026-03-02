@@ -1,10 +1,12 @@
 // Codigo reconstruido
 
+depth = -100
+
 // Movimentação
 hspd = 0;
 vspd = 0;
 grv = 0.5; 
-spd_normal = 4; 
+spd_normal = 6; 
 spd_dash = 20; 
 spd = spd_normal;
 pulo = -12; 

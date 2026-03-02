@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Sprite arvores another world",
-    "path":"folders/Sprites/Sprite arvores another world.yy",
+    "path":"folders/Rooms/Sprites/Sprite arvores another world.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
